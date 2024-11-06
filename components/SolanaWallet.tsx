@@ -6,7 +6,7 @@ import { Keypair } from "@solana/web3.js";
 import * as nacl from "tweetnacl";
 
 interface SolanaWalletProps {
-    mnemonic: string;
+    mnemonic: string[] | null;
 }
 
 export function SolanaWallet({ mnemonic }: SolanaWalletProps) {
@@ -15,14 +15,16 @@ export function SolanaWallet({ mnemonic }: SolanaWalletProps) {
 
     const generateAddress = async () => {
         try {
-            const seed = await mnemonicToSeed(mnemonic);
-            const path = `m/44'/501'/${currentIndex}'/0'`;
-            const derivedSeed = derivePath(path, seed.toString("hex")).key;
-            const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
-            const keypair = Keypair.fromSecretKey(secret);
-
-            setCurrentIndex(currentIndex + 1);
-            setPublicKeys([...publicKeys, keypair.publicKey.toBase58()]);
+            if(mnemonic) {
+                const seed = await mnemonicToSeed(mnemonic.join(' '));
+                const path = `m/44'/501'/${currentIndex}'/0'`;
+                const derivedSeed = derivePath(path, seed.toString("hex")).key;
+                const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
+                const keypair = Keypair.fromSecretKey(secret);
+    
+                setCurrentIndex(currentIndex + 1);
+                setPublicKeys([...publicKeys, keypair.publicKey.toBase58()]);
+            }
         } catch (error) {
             console.error("Failed to generate address:", error);
         }

@@ -4,7 +4,7 @@ import { mnemonicToSeed } from "bip39";
 import { Wallet, HDNodeWallet } from "ethers";
 
 interface EthWalletProps {
-    mnemonic: string;
+    mnemonic: string[] | null;
 }
 
 export const EthWallet = ({ mnemonic }: EthWalletProps) => {
@@ -13,16 +13,18 @@ export const EthWallet = ({ mnemonic }: EthWalletProps) => {
 
     const addWallet = async () => {
         try {
-            const seedBuffer = await mnemonicToSeed(mnemonic);
-            const derivationPath = `m/44'/60'/${currentIndex}'/0/0`;
-
-            const hdNode = HDNodeWallet.fromSeed(seedBuffer);
-            const childNode = hdNode.derivePath(derivationPath);
-
-            const wallet = new Wallet(childNode.privateKey);
-            setAddresses([...addresses, wallet.address]);
-
-            setCurrentIndex(currentIndex + 1);
+            if(mnemonic) {
+                const seedBuffer = await mnemonicToSeed(mnemonic.join(' '));
+                const derivationPath = `m/44'/60'/${currentIndex}'/0/0`;
+    
+                const hdNode = HDNodeWallet.fromSeed(seedBuffer);
+                const childNode = hdNode.derivePath(derivationPath);
+    
+                const wallet = new Wallet(childNode.privateKey);
+                setAddresses([...addresses, wallet.address]);
+    
+                setCurrentIndex(currentIndex + 1);
+            }
         } catch (error) {
             console.error("Error generating wallet address:", error);
         }

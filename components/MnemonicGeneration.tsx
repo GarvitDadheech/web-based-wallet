@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react";
 import { generateMnemonic } from "bip39";
+import { SolanaWallet } from "./SolanaWallet";
+import { EthWallet } from "./EthWallet";
 export const MnemonicGeneration = () => {
-    const[mnemomics,setMnemonics] = useState<null | String []>(null);
+    const[mnemomics,setMnemonics] = useState<null | string []>(null);
 
     const handleGenerateMnemonic = async () => {
         const mn = await generateMnemonic();
@@ -29,6 +31,8 @@ export const MnemonicGeneration = () => {
                         }
                     </div>
                 </div>
+                <SolanaWallet mnemonic={mnemomics}/>
+                <EthWallet mnemonic={mnemomics}/>
             </div>
         </div>
     )
