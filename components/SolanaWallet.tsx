@@ -4,14 +4,20 @@ import { mnemonicToSeed } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import * as nacl from "tweetnacl";
-
+import bs58 from 'bs58';
+import { AddressCard } from "./AddressCard";
 interface SolanaWalletProps {
     mnemonic: string[] | null;
 }
 
+interface Address {
+    pub: string;
+    priv: string;
+}
+
 export function SolanaWallet({ mnemonic }: SolanaWalletProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [publicKeys, setPublicKeys] = useState<string[]>([]);
+    const [addresses, setAddresses] = useState<Address[]>([]);
 
     const generateAddress = async () => {
         try {
@@ -23,7 +29,7 @@ export function SolanaWallet({ mnemonic }: SolanaWalletProps) {
                 const keypair = Keypair.fromSecretKey(secret);
     
                 setCurrentIndex(currentIndex + 1);
-                setPublicKeys([...publicKeys, keypair.publicKey.toBase58()]);
+                setAddresses([...addresses, {pub: keypair.publicKey.toBase58(),priv: bs58.encode(secret)}]);
             }
         } catch (error) {
             console.error("Failed to generate address:", error);
@@ -33,8 +39,8 @@ export function SolanaWallet({ mnemonic }: SolanaWalletProps) {
     return (
         <div>
             <button onClick={generateAddress}>Add Sol wallet</button>
-            {publicKeys.map((publicKey, index) => (
-                <div key={index}>{publicKey}</div>
+            {addresses.map((add, index) => (
+                <AddressCard privateAd={add.priv} publicAd={add.pub}/>
             ))}
         </div>
     );
