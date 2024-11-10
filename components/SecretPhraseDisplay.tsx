@@ -70,7 +70,7 @@ export const SecretPhraseDisplay = ({
       {isVisible && (
         <div
           onClick={copyPhrase}
-          className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 sm:p-6 bg-gray-700/50 rounded-xl border border-purple-500/20 cursor-pointer group hover:bg-gray-700/70 transition-all duration-300"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 sm:p-6  rounded-xl borderursor-pointer group  transition-all duration-300" 
         >
           {mnemonics.map((word, index) => (
             <div
@@ -78,12 +78,15 @@ export const SecretPhraseDisplay = ({
               className="flex items-center gap-2 py-2 px-4 sm:px-6 bg-gray-800 rounded-xl border border-purple-500/20 animate-slideIn select-none"
               style={{
                 animationDelay: `${index * 50}ms`,
+                position: "relative", // To position the shadow
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.3))", // Simulate light from the top-right
+                
               }}
             >
-              <span className="text-gray-200 text-sm md:text-base ">{word}</span>
+              <span className="text-gray-200 text-sm md:text-base font-semibold font-sans">{word}</span>
             </div>
           ))}
-          <div className="col-span-2 sm:col-span-3 flex justify-end mt-2 text-gray-300 text-xs sm:text-sm">
+          <div className="col-span-2 sm:col-span-3 flex justify-end mt-2 text-white text-xs sm:text-sm ">
             <span>Click anywhere to copy</span>
           </div>
         </div>

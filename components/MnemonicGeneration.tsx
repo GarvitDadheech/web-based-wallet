@@ -39,10 +39,12 @@ export const MnemonicGeneration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
+    <div className="min-h-screen bg-black text-gray-100 p-8">
       <div className="mx-auto max-w-7xl">
-        <div className="bg-gray-800 rounded-2xl p-4 md:p-8 shadow-2xl border border-blue-500/20 backdrop-blur-xl">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        <div className=" rounded-2xl p-4 md:p-8 shadow-2xl border border-blue-500/20 backdrop-blur-xl" style={{
+    boxShadow: "inset 0 0 20px rgba(59, 130, 246, 0.5)",
+  }}>
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
             VaultX - Crypto Wallet Generator
           </h2>
           <div className="flex flex-col sm:flex-row items-center mb-8 space-y-4 sm:space-y-0 sm:space-x-4">
@@ -51,7 +53,7 @@ export const MnemonicGeneration = () => {
               placeholder="Enter your secret phrase or click on generate wallet"
               value={inputValue}
               onChange={handleInputChange}
-              className="flex-1 bg-gray-700 border-2 border-blue-500/30 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 placeholder-gray-400 text-sm sm:text-base"
+              className="flex-1 bg-gray-800 border-2 border-blue-500/30 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 placeholder-gray-400 text-sm sm:text-base"
             />
             <button
               onClick={handleGenerateMnemonic}
