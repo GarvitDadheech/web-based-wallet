@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mnemonicToSeed } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
@@ -11,16 +11,24 @@ import { faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { AddressCard } from "./AddressCard";
 interface WalletProps {
     mnemonic: string[] | null;
+    resetAddresses: boolean;
 }
 
 interface Address {
     pub: string;
     priv: string;
 }
-export function EthWallet({ mnemonic }: WalletProps) {
+export function EthWallet({ mnemonic,resetAddresses }: WalletProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [addresses, setAddresses] = useState<Address[]>([]);
     const [isGenerating, setIsGenerating] = useState(false);
+
+    useEffect(() => {
+        if (resetAddresses) {
+            setAddresses([]);
+            setCurrentIndex(0);
+        }
+    }, [resetAddresses]);
 
     const addWallet = async () => {
         try {

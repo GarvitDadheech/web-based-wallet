@@ -4,15 +4,17 @@ import { generateMnemonic, mnemonicToSeed } from "bip39";
 import { SolanaWallet } from "./SolanaWallet";
 import { EthWallet } from "./EthWallet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { SecretPhraseDisplay } from "./SecretPhraseDisplay";
 
 export const MnemonicGeneration = () => {
   const [mnemonics, setMnemonics] = useState<string[] | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [isSecretVisible, setIsSecretVisible] = useState(false);
-
+  const [resetAddresses, setResetAddresses] = useState(false);
   const handleGenerateMnemonic = async () => {
+    setIsSecretVisible(false);
+    setResetAddresses(true);
     if (inputValue.trim() === "") {
       const mn = await generateMnemonic();
       const mnArray = mn.split(" ");
@@ -21,12 +23,13 @@ export const MnemonicGeneration = () => {
     } else {
       setMnemonics(inputValue.trim().split(" "));
     }
+    setTimeout(() => setResetAddresses(false), 0);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-
+    setIsSecretVisible(false);
     if (value.trim()) {
       setMnemonics(value.trim().split(" "));
     } else {
@@ -67,8 +70,8 @@ export const MnemonicGeneration = () => {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <SolanaWallet mnemonic={mnemonics} />
-            <EthWallet mnemonic={mnemonics} />
+            <SolanaWallet mnemonic={mnemonics} resetAddresses={resetAddresses}/>
+            <EthWallet mnemonic={mnemonics} resetAddresses={resetAddresses}/>
           </div>
         </div>
       </div>
