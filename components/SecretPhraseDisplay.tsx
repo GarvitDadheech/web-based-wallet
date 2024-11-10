@@ -80,7 +80,7 @@ export const SecretPhraseDisplay = ({
                 animationDelay: `${index * 50}ms`,
               }}
             >
-              <span className="text-gray-200 text-xs sm:text-sm">{word}</span>
+              <span className="text-gray-200 text-sm md:text-base ">{word}</span>
             </div>
           ))}
           <div className="col-span-2 sm:col-span-3 flex justify-end mt-2 text-gray-300 text-xs sm:text-sm">
