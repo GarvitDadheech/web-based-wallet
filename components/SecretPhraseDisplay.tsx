@@ -7,11 +7,13 @@ import {
   faEye,
   faWarning,
 } from "@fortawesome/free-solid-svg-icons";
+
 interface MnemonicDisplayProps {
   mnemonics: string[] | null;
   isVisible: boolean;
   onToggleVisibility: () => void;
 }
+
 export const SecretPhraseDisplay = ({
   mnemonics,
   isVisible,
@@ -33,11 +35,11 @@ export const SecretPhraseDisplay = ({
   if (!mnemonics) return null;
 
   return (
-    <div className="mb-8 animate-fadeIn">
-      <div className="flex items-center justify-between mb-4">
+    <div className="mb-8 animate-fadeIn px-4 sm:px-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-4">
         <button
           onClick={onToggleVisibility}
-          className="px-6 py-2 bg-purple-600 hover:bg-purple-700 rounded-2xl transition-all duration-300 flex items-center gap-2"
+          className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           <FontAwesomeIcon
             icon={isVisible ? faEyeSlash : faEye}
@@ -49,7 +51,7 @@ export const SecretPhraseDisplay = ({
         {isVisible && (
           <button
             onClick={copyPhrase}
-            className={`px-4 py-2 rounded-2xl transition-all duration-300 flex items-center gap-2
+            className={`w-full sm:w-auto px-4 py-2 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base
                             ${
                               copied
                                 ? "bg-purple-600 text-white"
@@ -68,35 +70,35 @@ export const SecretPhraseDisplay = ({
       {isVisible && (
         <div
           onClick={copyPhrase}
-          className="grid grid-cols-3 gap-4 p-6 bg-gray-700/50 rounded-xl border border-purple-500/20 cursor-pointer group hover:bg-gray-700/70 transition-all duration-300"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 sm:p-6 bg-gray-700/50 rounded-xl border border-purple-500/20 cursor-pointer group hover:bg-gray-700/70 transition-all duration-300"
         >
           {mnemonics.map((word, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 py-2 px-6 bg-gray-800 rounded-xl border border-purple-500/20 animate-slideIn select-none"
+              className="flex items-center gap-2 py-2 px-4 sm:px-6 bg-gray-800 rounded-xl border border-purple-500/20 animate-slideIn select-none"
               style={{
                 animationDelay: `${index * 50}ms`,
               }}
             >
-              <span className="text-gray-200">{word}</span>
+              <span className="text-gray-200 text-xs sm:text-sm">{word}</span>
             </div>
           ))}
-            <div className="col-span-3 flex justify-end mt-2 text-gray-300">
-                <span>Click anywhere to copy</span>
-            </div>
+          <div className="col-span-2 sm:col-span-3 flex justify-end mt-2 text-gray-300 text-xs sm:text-sm">
+            <span>Click anywhere to copy</span>
+          </div>
         </div>
       )}
 
       {isVisible && (
-          <div className="mt-4 p-4 bg-yellow-900/30 border border-yellow-500/30 rounded-2xl flex items-start gap-3">
-            <FontAwesomeIcon
-              icon={faWarning}
-              className="h-5 w-5 text-yellow-500"
-            />
-            <p className="text-sm text-yellow-200">
-              Never share your secret phrase. Anyone with access to it can
-              control your wallet.
-            </p>
+        <div className="mt-4 p-3 sm:p-4 bg-yellow-900/30 border border-yellow-500/30 rounded-2xl flex items-start gap-3">
+          <FontAwesomeIcon
+            icon={faWarning}
+            className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500"
+          />
+          <p className="text-xs sm:text-sm text-yellow-200">
+            Never share your secret phrase. Anyone with access to it can control
+            your wallet.
+          </p>
         </div>
       )}
     </div>

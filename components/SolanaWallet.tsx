@@ -9,7 +9,7 @@ import bs58 from 'bs58';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { AddressCard } from "./AddressCard";
-
+import { SiSolana } from 'react-icons/si';
 interface WalletProps {
     mnemonic: string[] | null;
     resetAddresses: boolean
@@ -59,7 +59,7 @@ export function SolanaWallet({ mnemonic,resetAddresses }: WalletProps) {
         <div className="bg-gray-800/50 rounded-xl p-6 border border-purple-500/20">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-purple-900/50 flex items-center justify-center">
-                    {/* <FontAwesomeIcon icon={faSolid} className="h-5 w-5 text-purple-400" /> */}
+                    <SiSolana className="h-5 w-5 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-purple-400">Solana Wallet</h3>
             </div>

@@ -1,13 +1,10 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { mnemonicToSeed } from "bip39";
-import { derivePath } from "ed25519-hd-key";
-import { Keypair } from "@solana/web3.js";
 import { Wallet, HDNodeWallet } from "ethers";
-import * as nacl from "tweetnacl";
-import bs58 from 'bs58';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faEthereum } from '@fortawesome/free-brands-svg-icons';
 import { AddressCard } from "./AddressCard";
 interface WalletProps {
     mnemonic: string[] | null;
@@ -59,7 +56,7 @@ export function EthWallet({ mnemonic,resetAddresses }: WalletProps) {
         <div className="bg-gray-800/50 rounded-xl p-6 border border-blue-500/20">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-blue-900/50 flex items-center justify-center">
-                    {/* <FontAwesomeIcon icon={faEthereum} className="h-5 w-5 text-blue-400" /> */}
+                    <FontAwesomeIcon icon={faEthereum} className="h-5 w-5 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-blue-400">Ethereum Wallet</h3>
             </div>
