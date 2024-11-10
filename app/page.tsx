@@ -1,9 +1,10 @@
 import { MnemonicGeneration } from "@/components/MnemonicGeneration";
+import { TopBar } from "@/components/TopBar";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="mx-48">
+    <div className="">
       <MnemonicGeneration/>
     </div>
   );
