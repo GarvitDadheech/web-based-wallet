@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { mnemonicToSeed } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
-import { Wallet, HDNodeWallet } from "ethers";
 import * as nacl from "tweetnacl";
 import bs58 from 'bs58';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

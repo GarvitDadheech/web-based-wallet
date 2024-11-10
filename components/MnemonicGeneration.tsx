@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { generateMnemonic, mnemonicToSeed } from "bip39";
+import { generateMnemonic} from "bip39";
 import { SolanaWallet } from "./SolanaWallet";
 import { EthWallet } from "./EthWallet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

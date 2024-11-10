@@ -34,7 +34,6 @@ export const AddressCard = ({ publicAd, privateAd }: address) => {
 
     return (
         <div className="bg-gray-800 rounded-xl p-4 mb-4 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 relative overflow-hidden">
-            {/* Public Address Section */}
             <div className="mb-3">
                 <div className="text-sm text-gray-400 mb-1">Public Address</div>
                 <div className="flex items-center justify-between gap-2 bg-gray-700 rounded-xl p-2">
@@ -53,7 +52,6 @@ export const AddressCard = ({ publicAd, privateAd }: address) => {
                 </div>
             </div>
             
-            {/* Private Key Section */}
             <div>
                 <div className="text-sm text-gray-400 mb-1">Private Key</div>
                 <div className="relative">
