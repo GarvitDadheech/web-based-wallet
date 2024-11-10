@@ -59,7 +59,7 @@ export function SolanaWallet({ mnemonic }: WalletProps) {
             <button
                 onClick={generateAddress}
                 disabled={isGenerating || !mnemonic}
-                className={`w-full mb-6 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 
+                className={`w-full mb-6 px-6 py-3 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 
                     ${!mnemonic 
                         ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                         : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white'
