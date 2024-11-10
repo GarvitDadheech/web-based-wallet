@@ -39,7 +39,7 @@ export const SecretPhraseDisplay = ({
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-4">
         <button
           onClick={onToggleVisibility}
-          className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+          className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           <FontAwesomeIcon
             icon={isVisible ? faEyeSlash : faEye}
@@ -51,7 +51,7 @@ export const SecretPhraseDisplay = ({
         {isVisible && (
           <button
             onClick={copyPhrase}
-            className={`w-full sm:w-auto px-4 py-2 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base
+            className={`w-full sm:w-auto px-4 py-2 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base
                             ${
                               copied
                                 ? "bg-purple-600 text-white"

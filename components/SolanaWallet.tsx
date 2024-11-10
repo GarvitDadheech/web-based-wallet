@@ -55,7 +55,7 @@ export function SolanaWallet({ mnemonic,resetAddresses }: WalletProps) {
     };
 
     return (
-        <div className="bg-gray-800/50 rounded-xl p-6 border border-purple-500/20">
+        <div className="bg-gray-800/50 rounded-xl p-3 md:p-6 border border-purple-500/20">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-purple-900/50 flex items-center justify-center">
                     <SiSolana className="h-5 w-5 text-purple-400" />
@@ -66,7 +66,7 @@ export function SolanaWallet({ mnemonic,resetAddresses }: WalletProps) {
             <button
                 onClick={generateAddress}
                 disabled={isGenerating || !mnemonic}
-                className={`w-full mb-6 px-4 py-1 md:px-6 md:py-3 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 
+                className={`w-full mb-6 px-4 py-3 md:px-6 rounded-xl md:rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 
                     ${!mnemonic 
                         ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                         : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white'

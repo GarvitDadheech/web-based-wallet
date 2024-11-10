@@ -40,8 +40,8 @@ export const MnemonicGeneration = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
-      <div className="mx-auto max-w-8xl">
-        <div className="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-blue-500/20 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="bg-gray-800 rounded-2xl p-4 md:p-8 shadow-2xl border border-blue-500/20 backdrop-blur-xl">
           <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             VaultX - Crypto Wallet Generator
           </h2>
@@ -70,7 +70,7 @@ export const MnemonicGeneration = () => {
             />
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 ">
             <SolanaWallet mnemonic={mnemonics} resetAddresses={resetAddresses} />
             <EthWallet mnemonic={mnemonics} resetAddresses={resetAddresses} />
           </div>
